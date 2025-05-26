@@ -27,7 +27,7 @@ app.MapStaticAssets();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Number}/{action=Index}/{id?}")
+    pattern: "{controller=Demo}/{action=Index}/{id?}")
     .WithStaticAssets();
 
 //thaihao

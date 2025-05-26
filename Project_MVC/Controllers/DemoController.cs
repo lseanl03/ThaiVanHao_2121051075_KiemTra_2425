@@ -54,10 +54,12 @@ namespace Project_MVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Age")] Demo demo)
+        public async Task<IActionResult> Create([Bind("Name,Age")] Demo demo)
         {
             if (ModelState.IsValid)
             {
+                var tableLength = await _context.Demo.CountAsync();
+                demo.Id = "std" + (tableLength + 1);
                 _context.Add(demo);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
